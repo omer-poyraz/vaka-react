@@ -5,6 +5,7 @@ import { Button, Card, CardBody, CardHeader, Form, FormGroup, Input, Label, Moda
 import { useDispatch, useSelector } from 'react-redux'
 import { CreateRoomData, DeleteRoomData, RoomsData, StructuresData, UpdateRoomData } from '../../service'
 import { useForm } from 'react-hook-form'
+import { changePage, selectRoom } from '../../redux/slices/routeSlice'
 
 const RoomPage = () => {
     const selector = useSelector((state) => state)
@@ -71,7 +72,7 @@ const RoomPage = () => {
                 return (
                     <>
                         <CiEdit size={24} color="green" onClick={() => { setSelectData(work); setIsCreate(false); setModal(true) }} />
-                        <CiGrid41 size={24} color='teal' className='ml-3' />
+                        <CiGrid41 size={24} color='teal' className='ml-3' onClick={() => { dispatch(selectRoom({ id: work.roomId })); dispatch(changePage({ id: 9 })) }} />
                         <CiTrash size={24} color="red" className="ml-3" onClick={() => deleteData(work.roomId)} />
                     </>
                 )

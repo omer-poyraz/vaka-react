@@ -1,24 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
 
 const routeSlice = createSlice({
     name: "route",
     initialState: {
-        id: 0
+        id: 1,
+        productId: 0,
+        roomId: 0,
+        storeId: 0,
+        structureId: 0
     },
     reducers: {
         changePage(state, action) {
             state.id = action.payload.id
-            if (action.payload.id === 9) {
-                toast.success("Çıkış yapıldı.")
-                setTimeout(() => {
-                    localStorage.clear()
-                    window.location.href = "/login"
-                }, 2000);
-            }
+        },
+        selectProduct(state, action) {
+            state.productId = action.payload.id
+        },
+        selectRoom(state, action) {
+            state.roomId = action.payload.id
+        },
+        selectStore(state, action) {
+            state.storeId = action.payload.id
+        },
+        selectStructure(state, action) {
+            state.structureId = action.payload.id
         }
     }
 })
 
-export const { changePage } = routeSlice.actions
+export const { changePage, selectProduct, selectRoom, selectStore, selectStructure } = routeSlice.actions
 export default routeSlice.reducer

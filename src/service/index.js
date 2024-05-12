@@ -29,14 +29,14 @@ export const ProductData = createAsyncThunk("ProductData", async ({ proId }) => 
     return result
 })
 
-export const CreateProductData = createAsyncThunk("CreateProductData", async ({ productName, storeId, isExit, roomId }) => {
-    const result = await axios.post(api.CreateProduct, { productName: productName, storeId: storeId, isExit: isExit, roomId: roomId }, { headers: { Authorization: `Bearer ${token}` } })
+export const CreateProductData = createAsyncThunk("CreateProductData", async ({ productName }) => {
+    const result = await axios.post(api.CreateProduct, { productName: productName }, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => res.data)
     return result
 })
 
-export const UpdateProductData = createAsyncThunk("UpdateProductData", async ({ proId, productName, storeId, isExit, roomId }) => {
-    const result = await axios.put(`${api.UpdateProduct}/${proId}`, { productName: productName, storeId: storeId, isExit: isExit, roomId: roomId, productId: proId }, { headers: { Authorization: `Bearer ${token}` } })
+export const UpdateProductData = createAsyncThunk("UpdateProductData", async ({ proId, productName }) => {
+    const result = await axios.put(`${api.UpdateProduct}/${proId}`, { productName: productName, productId: proId }, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => res.data)
     return result;
 })
@@ -47,14 +47,74 @@ export const DeleteProductData = createAsyncThunk("DeleteProductData", async ({ 
     return result
 })
 
+export const ProductRoomsData = createAsyncThunk("ProductRoomsData", async () => {
+    const result = await axios.get(api.ProductRooms, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const ProductRoomData = createAsyncThunk("ProductRoomData", async ({ pId }) => {
+    const result = await axios.get(`${api.ProductRoom}/${pId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const CreateProductRoomData = createAsyncThunk("CreateProductRoomData", async ({ pId }) => {
+    const result = await axios.post(api.CreateProductRoom, { productId: pId }, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const DeleteProductRoomData = createAsyncThunk("DeleteProductRoomData", async ({ pId }) => {
+    const result = await axios.delete(`${api.DeleteProductRoom}/${pId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const ProductStoresData = createAsyncThunk("ProductStoresData", async () => {
+    const result = await axios.get(api.ProductStores, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const ProductStoreData = createAsyncThunk("ProductStoreData", async ({ pId }) => {
+    const result = await axios.get(`${api.ProductStore}/${pId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const CreateProductStoreData = createAsyncThunk("CreateProductStoreData", async ({ pId }) => {
+    const result = await axios.post(api.CreateProductStore, { productId: pId }, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const DeleteProductStoreData = createAsyncThunk("DeleteProductStoreData", async ({ pId }) => {
+    const result = await axios.delete(`${api.DeleteProductStore}/${pId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
 export const RoomsData = createAsyncThunk("RoomsData", async () => {
     const result = await axios.get(`${api.Rooms}?PageNumber=1&PageSize=50`, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => res.data)
     return result
 })
 
+export const RoomStructureData = createAsyncThunk("RoomStructureData", async ({ sId }) => {
+    const result = await axios.get(`${api.RoomStructure}/${sId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
 export const RoomData = createAsyncThunk("RoomData", async ({ roomId }) => {
     const result = await axios.get(`${api.Room}/${roomId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const StoreStructureData = createAsyncThunk("StoreStructureData", async ({ sId }) => {
+    const result = await axios.get(`${api.StoreStructure}/${sId}`, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => res.data)
     return result
 })
@@ -73,6 +133,36 @@ export const UpdateRoomData = createAsyncThunk("UpdateRoomData", async ({ roomId
 
 export const DeleteRoomData = createAsyncThunk("DeleteRoomData", async ({ roomId }) => {
     const result = await axios.delete(`${api.DeleteRoom}/${roomId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const SaveStoresData = createAsyncThunk("SaveStoresData", async () => {
+    const result = await axios.get(api.SaveStores, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const SaveStoreData = createAsyncThunk("SaveStoreData", async ({ sId }) => {
+    const result = await axios.get(`${api.SaveStores}/${sId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const CreateSaveStoreData = createAsyncThunk("SaveStoreData", async ({ storeId, productId, isEntrance, roomId, structureId }) => {
+    const result = await axios.post(api.CreateSaveStore, { storeId: storeId, productId: productId, isEntrance: isEntrance, roomId: roomId, structureId: structureId }, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const UpdateSaveStoreData = createAsyncThunk("UpdateSaveStoreData", async ({ sId, storeId, productId, isEntrance, roomId, structureId }) => {
+    const result = await axios.put(`${api.UpdateSaveStore}/${sId}`, { storeId: storeId, productId: productId, isEntrance: isEntrance, roomId: roomId, structureId: structureId, saveStoreId: sId }, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const DeleteSaveStoreData = createAsyncThunk("DeleteSaveStoreData", async ({ sId }) => {
+    const result = await axios.delete(`${api.DeleteSaveStore}/${sId}`, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => res.data)
     return result
 })
@@ -143,6 +233,30 @@ export const WorkOrdersData = createAsyncThunk("WorkOrdersData", async () => {
     return result
 })
 
+export const ProductWorkOrdersData = createAsyncThunk("ProductWorkOrdersData", async ({ pId }) => {
+    const result = await axios.get(`${api.ProductWorkOrder}/${pId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const RoomWorkOrdersData = createAsyncThunk("RoomWorkOrdersData", async ({ rId }) => {
+    const result = await axios.get(`${api.RoomWorkOrder}/${rId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const StoreWorkOrdersData = createAsyncThunk("StoreWorkOrdersData", async ({ sId }) => {
+    const result = await axios.get(`${api.StoreWorkOrder}/${sId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const StructureWorkOrdersData = createAsyncThunk("StructureWorkOrdersData", async ({ sId }) => {
+    const result = await axios.get(`${api.StructureWorkOrder}/${sId}`, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
 export const WorkOrderData = createAsyncThunk("WorkOrderData", async ({ wId }) => {
     const result = await axios.get(`${api.WorkOrder}/${wId}`, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => res.data)
@@ -155,8 +269,32 @@ export const CreateWorkOrderData = createAsyncThunk("CreateWorkOrderData", async
     return result
 })
 
-export const UpdateWorkOrderData = createAsyncThunk("UpdateWorkOrderData", async ({ wId, workOrderName, isCompleted, productId, structureId, roomId, storeId }) => {
-    const result = await axios.put(`${api.UpdateWorkOrder}/${wId}`, { workOrderName: workOrderName, isCompleted: isCompleted, productId: productId, structureId: structureId, roomId: roomId, storeId: storeId, workOrderId: wId }, { headers: { Authorization: `Bearer ${token}` } })
+export const CreateProductWorkOrderData = createAsyncThunk("CreateProductWorkOrderData", async ({ pId, workOrderName, isCompleted }) => {
+    const result = await axios.post(`${api.CreateProductWorkOrder}`, { workOrderName: workOrderName, isCompleted: isCompleted, productId: pId }, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const CreateRoomWorkOrderData = createAsyncThunk("CreateRoomWorkOrderData", async ({ rId, workOrderName, isCompleted }) => {
+    const result = await axios.post(`${api.CreateRoomWorkOrder}`, { workOrderName: workOrderName, isCompleted: isCompleted, roomId: rId }, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const CreateStoreWorkOrderData = createAsyncThunk("CreateStoreWorkOrderData", async ({ sId, workOrderName, isCompleted }) => {
+    const result = await axios.post(`${api.CreateStoreWorkOrder}`, { workOrderName: workOrderName, isCompleted: isCompleted, storeId: sId }, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const CreateStructureWorkOrderData = createAsyncThunk("CreateStructureWorkOrderData", async ({ sId, workOrderName, isCompleted }) => {
+    const result = await axios.post(`${api.CreateStructureWorkOrder}`, { workOrderName: workOrderName, isCompleted: isCompleted, structureId: sId }, { headers: { Authorization: `Bearer ${token}` } })
+        .then(res => res.data)
+    return result
+})
+
+export const UpdateWorkOrderData = createAsyncThunk("UpdateWorkOrderData", async ({ wId, workOrderName, isCompleted }) => {
+    const result = await axios.put(`${api.UpdateWorkOrder}/${wId}`, { workOrderName: workOrderName, isCompleted: isCompleted, workOrderId: wId }, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => res.data)
     return result
 })

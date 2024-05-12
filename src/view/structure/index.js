@@ -5,6 +5,7 @@ import { Button, Card, CardBody, CardHeader, Form, FormGroup, Input, Label, Moda
 import { useDispatch, useSelector } from 'react-redux'
 import { CreateStructureData, DeleteStructureData, StructuresData, UpdateStructureData } from '../../service'
 import { useForm } from 'react-hook-form'
+import { changePage, selectStructure } from '../../redux/slices/routeSlice'
 
 const StructurePage = () => {
     const selector = useSelector((state) => state)
@@ -55,7 +56,7 @@ const StructurePage = () => {
                 return (
                     <>
                         <CiEdit size={24} color="green" onClick={() => { setIsCreate(false); setSelectedWork(work); setModal(true) }} />
-                        <CiGrid41 size={24} color='teal' className='ml-3' />
+                        <CiGrid41 size={24} color='teal' className='ml-3' onClick={() => { dispatch(selectStructure({ id: work.structureId })); dispatch(changePage({ id: 11 })) }} />
                         <CiTrash size={24} color="red" className="ml-3" onClick={() => deleteData(work.workOrderId)} />
                     </>
                 )

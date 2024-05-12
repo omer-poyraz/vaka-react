@@ -5,6 +5,7 @@ import { Button, Card, CardBody, CardHeader, Form, FormGroup, Input, Label, Moda
 import { useDispatch, useSelector } from 'react-redux'
 import { CreateStoreData, DeleteStoreData, StoresData, StructuresData, UpdateStoreData } from '../../service'
 import { useForm } from 'react-hook-form'
+import { changePage, selectStore } from '../../redux/slices/routeSlice'
 
 const StorePage = () => {
     const selector = useSelector((state) => state)
@@ -72,7 +73,7 @@ const StorePage = () => {
                 return (
                     <>
                         <CiEdit size={24} color="green" onClick={() => { setIsCreate(false); setSelectedStore(work); setModal(true) }} />
-                        <CiGrid41 size={24} color='teal' className='ml-3' />
+                        <CiGrid41 size={24} color='teal' className='ml-3' onClick={() => { dispatch(selectStore({ id: work.storeId })); dispatch(changePage({ id: 10 })) }} />
                         <CiTrash size={24} color="red" className="ml-3" onClick={() => deleteStore(work.storeId)} />
                     </>
                 )

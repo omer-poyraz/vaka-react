@@ -32,6 +32,29 @@ import userSlice from "./slices/userSlice";
 import usersSlice from "./slices/usersSlice";
 import workOrderSlice from "./slices/workOrderSlice";
 import workOrdersSlice from "./slices/workOrdersSlice";
+import productWorkOrdersSlice from "./slices/productWorkOrdersSlice";
+import roomWorkOrdersSlice from "./slices/roomWorkOrdersSlice";
+import storeWorkOrdersSlice from "./slices/storeWorkOrdersSlice";
+import structureWorkOrdersSlice from "./slices/structureWorkOrdersSlice";
+import createProductWorkOrderSlice from "./slices/createProductWorkOrderSlice";
+import createRoomWorkOrderSlice from "./slices/createRoomWorkOrderSlice";
+import createStoreWorkOrderSlice from "./slices/createStoreWorkOrderSlice";
+import createStructureWorkOrderSlice from "./slices/createStructureWorkOrderSlice";
+import productRoomSlice from "./slices/productRoomSlice";
+import productRoomsSlice from "./slices/productRoomsSlice";
+import createProductRoomSlice from "./slices/createProductRoomSlice";
+import deleteProductRoomSlice from "./slices/deleteProductRoomSlice";
+import productStoresSlice from "./slices/productStoresSlice";
+import productStoreSlice from "./slices/productStoreSlice";
+import createProductStoreSlice from "./slices/createProductStoreSlice";
+import deleteProductStoreSlice from "./slices/deleteProductStoreSlice";
+import roomStructureSlice from "./slices/roomStructureSlice";
+import storeStructureSlice from "./slices/storeStructureSlice";
+import saveStoresSlice from "./slices/saveStoresSlice";
+import saveStoreSlice from "./slices/saveStoreSlice";
+import createSaveStoreSlice from "./slices/createSaveStoreSlice";
+import updateSaveStoreSlice from "./slices/updateSaveStoreSlice";
+import deleteSaveStoreSlice from "./slices/deleteSaveStoreSlice";
 
 export const Store = configureStore({
     reducer: {
@@ -44,6 +67,10 @@ export const Store = configureStore({
         createStores: createStoreSlice,
         creataStructure: createStructureSlice,
         createWorkOrder: createWorkOrderSlice,
+        createProductWorkOrder: createProductWorkOrderSlice,
+        createRoomWorkOrder: createRoomWorkOrderSlice,
+        createStoreWorkOrder: createStoreWorkOrderSlice,
+        createStructureWorkOrder: createStructureWorkOrderSlice,
         deleteProduct: deleteProductSlice,
         deleteRoom: deleteRoomSlice,
         deleteStore: deleteStoreSlice,
@@ -67,6 +94,25 @@ export const Store = configureStore({
         user: userSlice,
         users: usersSlice,
         workOrder: workOrderSlice,
-        workOrders: workOrdersSlice
+        workOrders: workOrdersSlice,
+        productWorkOrders: productWorkOrdersSlice,
+        roomWorkOrders: roomWorkOrdersSlice,
+        storeWorkOrders: storeWorkOrdersSlice,
+        structureWorkOrders: structureWorkOrdersSlice,
+        productRooms: productRoomsSlice,
+        productRoom: productRoomSlice,
+        createProductRoom: createProductRoomSlice,
+        deleteProductRoom: deleteProductRoomSlice,
+        productStores: productStoresSlice,
+        productStore: productStoreSlice,
+        createProductStore: createProductStoreSlice,
+        deleteProductStore: deleteProductStoreSlice,
+        roomStructure: roomStructureSlice,
+        storeStructure: storeStructureSlice,
+        saveStores: saveStoresSlice,
+        saveStore: saveStoreSlice,
+        createSaveStore: createSaveStoreSlice,
+        updateSaveStore: updateSaveStoreSlice,
+        deleteSaveStore: deleteSaveStoreSlice
     }
 })

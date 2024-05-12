@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { CiCircleCheck, CiCircleInfo, CiEdit, CiTrash } from 'react-icons/ci'
+import { CiCircleCheck, CiCircleInfo, CiEdit, CiGrid41, CiTrash } from 'react-icons/ci'
 import { Select, Switch, Table } from 'antd'
 import { Button, Card, CardBody, CardHeader, Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { CreateWorkOrderData, DeleteWorkOrderData, ProductsData, RoomsData, StoresData, StructuresData, UpdateWorkOrderData, WorkOrdersData } from '../../service'
 import { useForm } from 'react-hook-form'
+import { changePage } from '../../redux/slices/routeSlice'
 
 const WorkOrderPage = () => {
     const selector = useSelector((state) => state)
@@ -131,6 +132,7 @@ const WorkOrderPage = () => {
                 return (
                     <>
                         <CiEdit size={24} color="green" onClick={() => { setIsCreate(false); setSelectedWork(work); setModal(true) }} />
+                        <CiGrid41 size={24} color='teal' className='ml-3' onClick={() => dispatch(changePage({ id: 12 }))} />
                         <CiTrash size={24} color="red" className="ml-3" onClick={() => deleteData(work.workOrderId)} />
                     </>
                 )
@@ -150,11 +152,11 @@ const WorkOrderPage = () => {
                     </div>
                 </CardHeader>
                 <CardBody>
-                    <Table
+                    {/* <Table
                         bordered
                         dataSource={selector.workOrders.works}
                         columns={columns}
-                    />
+                    /> */}
                 </CardBody>
             </Card>
             <Modal isOpen={modal} toggle={() => setModal(!modal)} className='modal-dialog-centered'>

@@ -6,5 +6,11 @@ export default [
     "Structure",
     "Work Order",
     "User Edit",
-    "Exit"
+    "Exit",
+    "Product Edit",
+    "Room Edit",
+    "Store Edit",
+    "Structure Edit",
+    "Product Manager",
+    "Save Store"
 ]
